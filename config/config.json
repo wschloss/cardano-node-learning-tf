@@ -1,0 +1,13 @@
+{
+    "jormungandr": {
+        "version": "v0.7.0-rc3",
+        "arch": "x86_64",
+        "os": "linux-gnu",
+        "config": "node-config.yaml",
+        "genesisBlockHash": "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770"
+    },
+    "docker": {
+        "registry": "wcschlosser",
+        "image":"cardano-node"
+    }
+}
