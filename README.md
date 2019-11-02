@@ -19,5 +19,6 @@ This project includes configurations to provision infrastructure and startup a c
 * Fine tune the node-config.yaml (jormungandr)
 * Create and securely store the node secrets (jormungandr and s3?)
 * Update image to run with secrets
+* Write terraform for digital ocean and update build and push all script to pick AWS or DO
 * Simple UI and API to pledge to stake pool
 * Healthchecking scheme (use jcli?)
