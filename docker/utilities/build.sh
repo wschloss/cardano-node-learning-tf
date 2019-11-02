@@ -11,10 +11,10 @@ JORMUNGANDR_ARCH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.arch')
 JORMUNGANDR_OS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.os')
 
 DOCKER_REGISTRY=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.registry')
-DOCKER_IMAGE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.cardanoNode.image')
+DOCKER_IMAGE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.cardanoUtilities.image')
 
 docker build \
-  -t $DOCKER_REGISTRY/$DOCKER_IMAGE:$JORMUNGANDR_VERSION \
+  -t $DOCKER_REGISTRY/$DOCKER_IMAGE:latest \
   --build-arg JORMUNGANDR_VERSION=$JORMUNGANDR_VERSION \
   --build-arg JORMUNGANDR_ARCH=$JORMUNGANDR_ARCH \
   --build-arg JORMUNGANDR_OS=$JORMUNGANDR_OS \

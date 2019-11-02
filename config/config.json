@@ -8,6 +8,11 @@
     },
     "docker": {
         "registry": "wcschlosser",
-        "image":"cardano-node"
+        "cardanoNode": {
+            "image":"cardano-node"
+        },
+        "cardanoUtilities": {
+            "image":"cardano-utilities"
+        }
     }
 }
