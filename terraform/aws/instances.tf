@@ -8,6 +8,9 @@ resource "aws_instance" "node" {
   ami             = "${var.ami}"
   instance_type   = "${var.node_instance_type}"
   security_groups = ["${aws_security_group.node_ssh_and_tcp.name}"]
+  root_block_device {
+    volume_size = "${var.node_storage_size_gb}"
+  }
 
   connection {
     type        = "ssh"
@@ -32,7 +35,7 @@ resource "aws_instance" "node" {
       "sudo yum update -y",
       "sudo amazon-linux-extras install docker -y",
       "sudo service docker start",
-      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node -v /configuration:/configuration ${var.node_docker_image} /root/jormungandr --config /configuration/${var.node_config} --genesis-block-hash ${var.genesis_block_hash}"
+      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node -v /configuration:/configuration:ro ${var.node_docker_image} /root/jormungandr --config /configuration/${var.node_config} --genesis-block-hash ${var.genesis_block_hash}"
     ]
   }
 }

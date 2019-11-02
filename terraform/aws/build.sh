@@ -21,6 +21,7 @@ INGRESS_CIDRS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.ingressCi
 SSH_PUBLIC_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPublicKeyPath')
 SSH_PRIVATE_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPrivateKeyPath')
 SSH_USER=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshUser')
+NODE_STORAGE_SIZE_GB=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeStorageSizeGb')
 NODE_TCP_PORT=$(cat $CONFIG_FILE_DIRECTORY/$JORMUNGANDR_CONFIG_FILE | sed -n '/rest/{n;p;}' | cut -d ':' -f3)
 NODE_DOCKER_IMAGE=$DOCKER_REGISTRY/$DOCKER_IMAGE:$JORMUNGANDR_VERSION
 
@@ -32,6 +33,7 @@ terraform \
   -var "ssh_public_key_path=$SSH_PUBLIC_KEY_PATH" \
   -var "ssh_private_key_path=$SSH_PRIVATE_KEY_PATH" \
   -var "ssh_user=$SSH_USER" \
+  -var "node_storage_size_gb=$NODE_STORAGE_SIZE_GB" \
   -var "node_tcp_port=$NODE_TCP_PORT" \
   -var "node_docker_image=$NODE_DOCKER_IMAGE" \
   -var "node_config=$JORMUNGANDR_CONFIG_FILE" \

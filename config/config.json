@@ -22,7 +22,8 @@
             "ingressCidrs": ["23.31.82.211/32"],
             "sshPublicKeyPath": "~/.ssh/id_rsa.pub",
             "sshPrivateKeyPath": "~/.ssh/id_rsa",
-            "sshUser": "ec2-user"
+            "sshUser": "ec2-user",
+            "nodeStorageSizeGb": "16"
         },
         "digitalOcean": {
             "not": "implemented"

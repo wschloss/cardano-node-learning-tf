@@ -16,7 +16,6 @@ This project includes configurations to provision infrastructure and startup a c
   - Helpful script to build all docker images, push them to the configured registry, and then run terraform to provision the instance
 
 ## TODO
-* EBS volume and EIP for node instance (terraform)
 * Fine tune the node-config.yaml (jormungandr)
 * Create and securely store the node secrets (jormungandr and s3?)
 * Update image to run with secrets
