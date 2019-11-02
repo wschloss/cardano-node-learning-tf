@@ -32,7 +32,7 @@ resource "aws_instance" "node" {
       "sudo yum update -y",
       "sudo amazon-linux-extras install docker -y",
       "sudo service docker start",
-      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node ${var.node_docker_image} -v /configuration:/configuration /root/jormungandr --config /configuration/${var.node_config} --genesis-block-hash ${var.genesis_block_hash}"
+      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node -v /configuration:/configuration ${var.node_docker_image} /root/jormungandr --config /configuration/${var.node_config} --genesis-block-hash ${var.genesis_block_hash}"
     ]
   }
 }

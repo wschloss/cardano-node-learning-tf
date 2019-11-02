@@ -1,4 +1,5 @@
 FROM amazonlinux:2.0.20191016.0 AS base
+LABEL maintainer="wcschlosser@gmail.com"
 
 RUN mkdir -p /root/
 WORKDIR /root/

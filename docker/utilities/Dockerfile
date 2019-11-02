@@ -1,4 +1,5 @@
 FROM amazonlinux:2.0.20191016.0
+LABEL maintainer="wcschlosser@gmail.com"
 
 RUN yum update -y && \
     yum install tar gzip -y
