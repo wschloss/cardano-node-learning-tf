@@ -1,1 +1,1 @@
-Contains common configuration in json format which is used across the terraform and docker steps
+Contains configuration used across the project

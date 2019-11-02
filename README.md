@@ -3,8 +3,11 @@
 This project includes configurations to provision infrastructure and startup a cardano node for the shelley testnet
 
 ## Project layout
+* config
+  - contains configuration files used across the project
 * docker
   - Contains Dockerfiles to construct node image
+  - build.sh scripts can be used to parse configs from config/* and then build and tag the images
 * terraform
   - Contains terraform configurations to setup AWS infrastructure
 

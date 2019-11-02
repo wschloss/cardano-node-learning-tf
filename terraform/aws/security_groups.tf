@@ -1,4 +1,4 @@
-resource "aws_security_group" "cardano_node_ssh_and_tcp" {
+resource "aws_security_group" "node_ssh_and_tcp" {
   name        = "cardano_node_ssh_and_tcp"
   description = "Allows ssh access and TCP to the listening port for the cardano node"
 
@@ -6,14 +6,14 @@ resource "aws_security_group" "cardano_node_ssh_and_tcp" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = "${var.security_group_allowed_ingress_cidrs}"
+    cidr_blocks = "${var.ingress_cidrs}"
   }
 
   ingress {
-    from_port   = "${var.cardano_node_tcp_port}"
-    to_port     = "${var.cardano_node_tcp_port}"
+    from_port   = "${var.node_tcp_port}"
+    to_port     = "${var.node_tcp_port}"
     protocol    = "tcp"
-    cidr_blocks = "${var.security_group_allowed_ingress_cidrs}"
+    cidr_blocks = "${var.ingress_cidrs}"
   }
 
   egress {

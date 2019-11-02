@@ -14,5 +14,18 @@
         "cardanoUtilities": {
             "image":"cardano-utilities"
         }
+    },
+    "terraform": {
+        "aws": {
+            "nodeInstanceType": "t2.micro",
+            "ami": "ami-0b69ea66ff7391e80",
+            "ingressCidrs": ["73.153.8.165/32"],
+            "sshPublicKeyPath": "~/.ssh/id_rsa.pub",
+            "sshPrivateKeyPath": "~/.ssh/id_rsa",
+            "sshUser": "ec2-user"
+        },
+        "digitalOcean": {
+            "not": "implemented"
+        }
     }
 }

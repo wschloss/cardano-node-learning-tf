@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 type jq >/dev/null 2>&1 || { echo >&2 'Please install jq to use this script'; exit 1; }
+type docker >/dev/null 2>&1 || { echo >&2 'Please install docker to use this script'; exit 1; }
 
 CONFIG_JSON_FILE_LOCATION='../../config/config.json'
 
