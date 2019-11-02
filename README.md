@@ -12,6 +12,8 @@ This project includes configurations to provision infrastructure and startup a c
   - Contains terraform configurations to setup and provision infrastructure from scratch
   - build.sh scripts will parse configs from config/* and then run terraform apply correctly
   - use 'terraform destroy' in the appropriate provider directory to clean up all resources
+* build_and_push_all.sh
+  - Helpful script to build all docker images, push them to the configured registry, and then run terraform to provision the instance
 
 ## TODO
 * EBS volume and EIP for node instance (terraform)
