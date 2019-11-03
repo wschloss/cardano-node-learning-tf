@@ -21,4 +21,5 @@ docker build \
   --build-arg JORMUNGANDR_OS=$JORMUNGANDR_OS \
   .
 
+echo
 echo $DOCKER_REGISTRY/$DOCKER_IMAGE:latest

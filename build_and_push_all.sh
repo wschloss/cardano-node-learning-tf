@@ -15,7 +15,7 @@ echo "Building the following images: $images_to_build"
 images_to_push=()
 for i in $images_to_build; do
   cd ./docker/$i
-  images_to_push+=$(./build.sh)
+  images_to_push+="$(./build.sh | tail -1) "
   cd ../..
 done
 
@@ -26,7 +26,9 @@ done
 
 echo "Applying terraform for AWS"
 cd terraform/aws
+terraform init
 ./build.sh
 cd ../..
 
+echo
 echo "Done!"
