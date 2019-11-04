@@ -43,12 +43,22 @@ variable "node_docker_image" {
   default = "wcschlosser/cardano-node:latest"
 }
 
-variable "node_config" {
-  type    = "string"
-  default = "node-config.yaml"
-}
-
 variable "genesis_block_hash" {
   type    = "string"
   default = "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770"
+}
+
+variable "stake_pool_sig_key" {
+  type = "string"
+  default = "~/.jormungandr/stake_pool/stake_pool_kes.prv"
+}
+
+variable "stake_pool_vrf_key" {
+  type = "string"
+  default = "~/.jormungandr/stake_pool/stake_pool_vrf.prv"
+}
+
+variable "stake_pool_node_id" {
+  type = "string"
+  default = "~/.jormungandr/stake_pool/stake_pool.id"
 }

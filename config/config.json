@@ -3,8 +3,12 @@
         "version": "v0.7.0-rc3",
         "arch": "x86_64",
         "os": "linux-gnu",
-        "config": "node-config.yaml",
-        "genesisBlockHash": "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770"
+        "genesisBlockHash": "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770",
+        "stakePool": {
+            "sigKey": "~/.jormungandr/stake_pool/stake_pool_kes.prv",
+            "vrfKey": "~/.jormungandr/stake_pool/stake_pool_vrf.prv",
+            "nodeId": "~/.jormungandr/stake_pool/stake_pool.id"
+        }
     },
     "docker": {
         "registry": "wcschlosser",
@@ -19,7 +23,7 @@
         "aws": {
             "nodeInstanceType": "t2.micro",
             "ami": "ami-0b69ea66ff7391e80",
-            "ingressCidrs": ["73.153.8.165/32"],
+            "sshIngressCidrs": ["73.153.8.165/32"],
             "sshPublicKeyPath": "~/.ssh/id_rsa.pub",
             "sshPrivateKeyPath": "~/.ssh/id_rsa",
             "sshUser": "ec2-user",

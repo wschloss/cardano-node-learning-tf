@@ -6,14 +6,14 @@ resource "aws_security_group" "node_ssh_and_tcp" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = "${var.ingress_cidrs}"
+    cidr_blocks = "${var.ssh_ingress_cidrs}"
   }
 
   ingress {
     from_port   = "${var.node_tcp_port}"
     to_port     = "${var.node_tcp_port}"
     protocol    = "tcp"
-    cidr_blocks = "${var.ingress_cidrs}"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

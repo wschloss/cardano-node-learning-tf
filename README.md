@@ -16,9 +16,7 @@ This project includes configurations to provision infrastructure and startup a c
   - Helpful script to build all docker images, push them to the configured registry, and then run terraform to provision the instance
 
 ## TODO
-* Fine tune the node-config.yaml (jormungandr)
-* Create and securely store the node secrets (jormungandr and s3?)
-* Update image to run with secrets
 * Write terraform for digital ocean and update build and push all script to pick AWS or DO
-* Simple UI and API to pledge to stake pool
+* Add EIP (how tolerant is the network to a changing node IP?)
+* Simple API / UI to display node stats
 * Healthchecking scheme (use jcli?)

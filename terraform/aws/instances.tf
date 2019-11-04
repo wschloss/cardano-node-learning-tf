@@ -22,12 +22,14 @@ resource "aws_instance" "node" {
   provisioner "remote-exec" {
     inline = [
       "sudo mkdir -p /configuration",
-      "sudo chmod a+rw /configuration"
+      "sudo chmod a+rw /configuration",
+      "sudo mkdir -p /storage",
+      "sudo chmod a+rw /storage"
     ]
   }
 
   provisioner "local-exec" {
-    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${var.ssh_private_key_path} ../../config/${var.node_config} ${var.ssh_user}@${aws_instance.node.public_ip}:/configuration/${var.node_config}"
+    command = "../generate_and_scp_node_configuration.sh ${var.ssh_private_key_path} ${var.ssh_user} ${aws_instance.node.public_ip} ${var.stake_pool_sig_key} ${var.stake_pool_vrf_key} ${var.stake_pool_node_id}"
   }
 
   provisioner "remote-exec" {
@@ -35,7 +37,7 @@ resource "aws_instance" "node" {
       "sudo yum update -y",
       "sudo amazon-linux-extras install docker -y",
       "sudo service docker start",
-      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node -v /configuration:/configuration:ro ${var.node_docker_image} /root/jormungandr --config /configuration/${var.node_config} --genesis-block-hash ${var.genesis_block_hash}"
+      "sudo docker run -d -p ${var.node_tcp_port}:${var.node_tcp_port} --name cardano-node -v /configuration:/configuration:ro -v /storage:/root/storage ${var.node_docker_image} /root/jormungandr --config /configuration/node-config.yaml --secret /configuration/node-secret.yaml --genesis-block-hash ${var.genesis_block_hash}"
     ]
   }
 }
