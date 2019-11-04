@@ -1,9 +1,10 @@
 {
     "jormungandr": {
-        "version": "v0.7.0-rc3",
+        "version": "v0.6.5",
         "arch": "x86_64",
         "os": "linux-gnu",
         "genesisBlockHash": "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770",
+        "nodePrivateId": "~/.jormungandr/wallet/receiver_secret.key",
         "stakePool": {
             "sigKey": "~/.jormungandr/stake_pool/stake_pool_kes.prv",
             "vrfKey": "~/.jormungandr/stake_pool/stake_pool_vrf.prv",

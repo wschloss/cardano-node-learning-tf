@@ -26,7 +26,7 @@ FROM amazonlinux:2.0.20191016.0 as runtime
 
 RUN mkdir -p /root/
 WORKDIR /root/
-RUN set RUST_BACKTRACE=full
+ENV RUST_BACKTRACE=full
 COPY --from=base /root/jormungandr .
 
 CMD [ "/bin/bash" ]

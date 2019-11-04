@@ -11,6 +11,7 @@ CONFIG_JSON_FILE_LOCATION=$CONFIG_FILE_DIRECTORY/$CONFIG_JSON_FILE_NAME
 
 JORMUNGANDR_VERSION=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.version')
 JORMUNGANDR_GENESIS_BLOCK_HASH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.genesisBlockHash')
+JORMUNGANDR_NODE_PRIVATE_ID=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.nodePrivateId')
 JORMUNGANDR_STAKE_POOL_SIG_KEY=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.stakePool.sigKey')
 JORMUNGANDR_STAKE_POOL_VRF_KEY=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.stakePool.vrfKey')
 JORMUNGANDR_STAKE_POOL_NODE_ID=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormungandr.stakePool.nodeId')
@@ -24,7 +25,7 @@ SSH_PUBLIC_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.ssh
 SSH_PRIVATE_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPrivateKeyPath')
 SSH_USER=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshUser')
 NODE_STORAGE_SIZE_GB=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeStorageSizeGb')
-NODE_TCP_PORT=$(cat $CONFIG_FILE_DIRECTORY/$JORMUNGANDR_CONFIG_FILE | sed -n '/rest/{n;p;}' | cut -d ':' -f3)
+NODE_TCP_PORT=$(cat $CONFIG_FILE_DIRECTORY/node-config.yaml | sed -n '/^rest/{n;p;}' | cut -d ':' -f3)
 NODE_DOCKER_IMAGE=$DOCKER_REGISTRY/$DOCKER_IMAGE:$JORMUNGANDR_VERSION
 
 terraform \
@@ -39,6 +40,7 @@ terraform \
   -var "node_tcp_port=$NODE_TCP_PORT" \
   -var "node_docker_image=$NODE_DOCKER_IMAGE" \
   -var "genesis_block_hash=$JORMUNGANDR_GENESIS_BLOCK_HASH" \
+  -var "node_private_id=$JORMUNGANDR_NODE_PRIVATE_ID" \
   -var "stake_pool_sig_key=$JORMUNGANDR_STAKE_POOL_SIG_KEY" \
   -var "stake_pool_vrf_key=$JORMUNGANDR_STAKE_POOL_VRF_KEY" \
   -var "stake_pool_node_id=$JORMUNGANDR_STAKE_POOL_NODE_ID"

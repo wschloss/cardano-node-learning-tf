@@ -29,7 +29,7 @@ resource "aws_instance" "node" {
   }
 
   provisioner "local-exec" {
-    command = "../generate_and_scp_node_configuration.sh ${var.ssh_private_key_path} ${var.ssh_user} ${aws_instance.node.public_ip} ${var.stake_pool_sig_key} ${var.stake_pool_vrf_key} ${var.stake_pool_node_id}"
+    command = "../generate_and_scp_node_configuration.sh ${var.ssh_private_key_path} ${var.ssh_user} ${aws_instance.node.public_ip} ${var.node_private_id} ${var.stake_pool_sig_key} ${var.stake_pool_vrf_key} ${var.stake_pool_node_id}"
   }
 
   provisioner "remote-exec" {

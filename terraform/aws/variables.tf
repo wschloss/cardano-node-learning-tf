@@ -8,7 +8,7 @@ variable "ami" {
   default = "ami-0b69ea66ff7391e80"
 }
 
-variable "ingress_cidrs" {
+variable "ssh_ingress_cidrs" {
   type    = "list"
   default = ["73.153.8.165/32"]
 }
@@ -48,17 +48,22 @@ variable "genesis_block_hash" {
   default = "adbdd5ede31637f6c9bad5c271eec0bc3d0cb9efb86a5b913bb55cba549d0770"
 }
 
+variable "node_private_id" {
+  type    = "string"
+  default = "~/.jormungandr/wallet/receiver_secret.key"
+}
+
 variable "stake_pool_sig_key" {
-  type = "string"
+  type    = "string"
   default = "~/.jormungandr/stake_pool/stake_pool_kes.prv"
 }
 
 variable "stake_pool_vrf_key" {
-  type = "string"
+  type    = "string"
   default = "~/.jormungandr/stake_pool/stake_pool_vrf.prv"
 }
 
 variable "stake_pool_node_id" {
-  type = "string"
+  type    = "string"
   default = "~/.jormungandr/stake_pool/stake_pool.id"
 }
