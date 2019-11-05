@@ -3,8 +3,8 @@ log:
  level: info
  output: stderr
 p2p:
-  listen_address: "/ip4/0.0.0.0/tcp/3101"
-  public_address: "/ip4/__PUBLIC_IP__/tcp/3101"
+  listen_address: "/ip4/0.0.0.0/tcp/3000"
+  public_address: "/ip4/__PUBLIC_IP__/tcp/3000"
   #private_id: __NODE_PRIVATE_ID__
   topics_of_interest:
     messages: "high"

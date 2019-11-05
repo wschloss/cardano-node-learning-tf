@@ -1,11 +1,21 @@
-variable "node_instance_type" {
+variable "do_access_token_file" {
   type    = "string"
-  default = "t2.micro"
+  default = "~/.digitalocean/credentials"
 }
 
-variable "ami" {
+variable "node_droplet_size" {
   type    = "string"
-  default = "ami-0b69ea66ff7391e80"
+  default = "s-1vcpu-1gb"
+}
+
+variable "image" {
+  type    = "string"
+  default = "ubuntu-18-04-x64"
+}
+
+variable "region" {
+  type    = "string"
+  default = "sfo2"
 }
 
 variable "trusted_ingress_cidrs" {
@@ -25,12 +35,7 @@ variable "ssh_private_key_path" {
 
 variable "ssh_user" {
   type    = "string"
-  default = "ec2-user"
-}
-
-variable "node_storage_size_gb" {
-  type    = "string"
-  default = "16"
+  default = "root"
 }
 
 variable "node_rest_port" {

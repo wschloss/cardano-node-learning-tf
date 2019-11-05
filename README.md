@@ -16,8 +16,7 @@ This project includes configurations to provision infrastructure and startup a c
   - Helpful script to build all docker images, push them to the configured registry, and then run terraform to provision the instance
 
 ## TODO
-* Write terraform for digital ocean
-* Update the build and push all script to take an AWS vs DO argument
+* Update the build and push all script to take an AWS vs DO argument (currently assumes AWS)
 * Simple API / UI to display node stats
 * Healthchecking scheme for automatic container restarts
 * Fine tune node-config.yaml (max connections, memory settings)
@@ -28,4 +27,4 @@ This project includes configurations to provision infrastructure and startup a c
   - restart.sh: Restart jormungandr container on the node
   - update.sh: Update the version of jormungandr running on the node
   - backup.sh: Snapshot and store important data on the node (blocks in storage - is this backup actually needed?)
-* Refactoring (especially shell scripts and how they interact)
+* Refactoring (especially shell scripts and how they interact, shared terraform between aws / do)

@@ -18,26 +18,28 @@ JORMUNGANDR_STAKE_POOL_NODE_ID=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormun
 DOCKER_REGISTRY=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.registry')
 DOCKER_IMAGE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.cardanoNode.image')
 
-NODE_INSTANCE_TYPE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeInstanceType')
-AMI=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.ami')
-TRUSTED_INGRESS_CIDRS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.trustedIngressCidrs')
-SSH_PUBLIC_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPublicKeyPath')
-SSH_PRIVATE_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPrivateKeyPath')
-SSH_USER=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshUser')
-NODE_STORAGE_SIZE_GB=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeStorageSizeGb')
+DO_ACCESS_TOKEN_FILE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.doAccessTokenFile')
+NODE_DROPLET_SIZE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.nodeDropletSize')
+IMAGE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.image')
+REGION=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.region')
+TRUSTED_INGRESS_CIDRS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.trustedIngressCidrs')
+SSH_PUBLIC_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.sshPublicKeyPath')
+SSH_PRIVATE_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.sshPrivateKeyPath')
+SSH_USER=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.digitalOcean.sshUser')
 NODE_REST_PORT=$(cat $CONFIG_FILE_DIRECTORY/node-config.yaml | sed 's/\"//g' | sed -n '/^rest/{n;p;}' | cut -d ':' -f3)
 NODE_GRPC_PORT=$(cat $CONFIG_FILE_DIRECTORY/node-config.yaml | sed 's/\"//g' | sed -n '/^p2p/{n;p;}' | cut -d '/' -f5)
 NODE_DOCKER_IMAGE=$DOCKER_REGISTRY/$DOCKER_IMAGE:$JORMUNGANDR_VERSION
 
 terraform \
   apply \
-  -var "node_instance_type=$NODE_INSTANCE_TYPE" \
-  -var "ami=$AMI" \
+  -var "do_access_token_file=$DO_ACCESS_TOKEN_FILE" \
+  -var "node_droplet_size=$NODE_DROPLET_SIZE" \
+  -var "image=$IMAGE" \
+  -var "region=$REGION" \
   -var "trusted_ingress_cidrs=$TRUSTED_INGRESS_CIDRS" \
   -var "ssh_public_key_path=$SSH_PUBLIC_KEY_PATH" \
   -var "ssh_private_key_path=$SSH_PRIVATE_KEY_PATH" \
   -var "ssh_user=$SSH_USER" \
-  -var "node_storage_size_gb=$NODE_STORAGE_SIZE_GB" \
   -var "node_rest_port=$NODE_REST_PORT" \
   -var "node_grpc_port=$NODE_GRPC_PORT" \
   -var "node_docker_image=$NODE_DOCKER_IMAGE" \
