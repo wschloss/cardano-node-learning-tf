@@ -9,6 +9,7 @@ p2p:
   topics_of_interest:
     messages: "high"
     blocks: "high"
+  max_connections: 16
   trusted_peers:
    - address: "/ip4/3.115.194.22/tcp/3000"
      id: ed25519_pk1npsal4j9p9nlfs0fsmfjyga9uqk5gcslyuvxy6pexxr0j34j83rsf98wl2
@@ -27,3 +28,10 @@ p2p:
 rest:
  listen: 0.0.0.0:3101
 storage: "./storage"
+mempool:
+  fragment_ttl: 30m
+  log_ttl: 30m
+  garbage_collection_interval: 30m
+leadership:
+  log_ttl: 30m
+  garbage_collection_interval: 30m

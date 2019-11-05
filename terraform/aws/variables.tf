@@ -1,3 +1,14 @@
+variable "aws_profile" {
+  type = "string"
+  default = "default"
+}
+
+variable "region" {
+  type = "string"
+  default = "us-east-1"
+}
+
+
 variable "node_instance_type" {
   type    = "string"
   default = "t2.micro"

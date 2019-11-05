@@ -22,6 +22,8 @@
     },
     "terraform": {
         "aws": {
+            "awsProfile": "default",
+            "region": "us-east-1",
             "nodeInstanceType": "t2.micro",
             "ami": "ami-0b69ea66ff7391e80",
             "trustedIngressCidrs": ["73.153.8.165/32"],

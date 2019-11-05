@@ -18,6 +18,8 @@ JORMUNGANDR_STAKE_POOL_NODE_ID=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.jormun
 DOCKER_REGISTRY=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.registry')
 DOCKER_IMAGE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.docker.cardanoNode.image')
 
+AWS_PROFILE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.awsProfile')
+REGION=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.region')
 NODE_INSTANCE_TYPE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeInstanceType')
 AMI=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.ami')
 TRUSTED_INGRESS_CIDRS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.trustedIngressCidrs')
@@ -31,6 +33,8 @@ NODE_DOCKER_IMAGE=$DOCKER_REGISTRY/$DOCKER_IMAGE:$JORMUNGANDR_VERSION
 
 terraform \
   apply \
+  -var "aws_profile=$AWS_PROFILE" \
+  -var "region=$REGION" \
   -var "node_instance_type=$NODE_INSTANCE_TYPE" \
   -var "ami=$AMI" \
   -var "trusted_ingress_cidrs=$TRUSTED_INGRESS_CIDRS" \
