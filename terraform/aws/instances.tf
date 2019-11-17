@@ -7,6 +7,7 @@ resource "aws_instance" "node" {
   key_name        = "${aws_key_pair.ssh_key.key_name}"
   ami             = "${var.ami}"
   instance_type   = "${var.node_instance_type}"
+  count           = "${var.instance_count}"
   security_groups = ["${aws_security_group.node_ssh_and_tcp.name}"]
   root_block_device {
     volume_size = "${var.node_storage_size_gb}"
@@ -29,7 +30,7 @@ resource "aws_instance" "node" {
   }
 
   provisioner "local-exec" {
-    command = "../generate_and_scp_node_configuration.sh ${var.ssh_private_key_path} ${var.ssh_user} ${aws_instance.node.public_ip} ${var.node_private_id} ${var.stake_pool_sig_key} ${var.stake_pool_vrf_key} ${var.stake_pool_node_id}"
+    command = "../generate_and_scp_node_configuration.sh ${var.ssh_private_key_path} ${var.ssh_user} ${self.public_ip} ${var.node_private_id} ${var.stake_pool_sig_key} ${var.stake_pool_vrf_key} ${var.stake_pool_node_id}"
   }
 
   provisioner "remote-exec" {

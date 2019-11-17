@@ -22,6 +22,7 @@ AWS_PROFILE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.awsProfile'
 REGION=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.region')
 NODE_INSTANCE_TYPE=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.nodeInstanceType')
 AMI=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.ami')
+INSTANCE_COUNT=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.instanceCount')
 TRUSTED_INGRESS_CIDRS=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.trustedIngressCidrs')
 SSH_PUBLIC_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPublicKeyPath')
 SSH_PRIVATE_KEY_PATH=$(cat $CONFIG_JSON_FILE_LOCATION | jq -r '.terraform.aws.sshPrivateKeyPath')
@@ -37,6 +38,7 @@ terraform \
   -var "region=$REGION" \
   -var "node_instance_type=$NODE_INSTANCE_TYPE" \
   -var "ami=$AMI" \
+  -var "instance_count=$INSTANCE_COUNT" \
   -var "trusted_ingress_cidrs=$TRUSTED_INGRESS_CIDRS" \
   -var "ssh_public_key_path=$SSH_PUBLIC_KEY_PATH" \
   -var "ssh_private_key_path=$SSH_PRIVATE_KEY_PATH" \

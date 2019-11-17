@@ -1,10 +1,10 @@
 variable "aws_profile" {
-  type = "string"
+  type    = "string"
   default = "default"
 }
 
 variable "region" {
-  type = "string"
+  type    = "string"
   default = "us-east-1"
 }
 
@@ -18,6 +18,12 @@ variable "ami" {
   type    = "string"
   default = "ami-0b69ea66ff7391e80"
 }
+
+variable "instance_count" {
+  type    = "string"
+  default = "1"
+}
+
 
 variable "trusted_ingress_cidrs" {
   type    = "list"

@@ -17,14 +17,9 @@ This project includes configurations to provision infrastructure and startup a c
 
 ## TODO
 * Update the build and push all script to take an AWS vs DO argument (currently assumes AWS)
-* Simple API / UI to display node stats
+* Simple API to display node health
 * Healthchecking scheme for automatic container restarts
-* Fine tune node-config.yaml (max connections, memory settings)
-* Remove the need for remote terraform state? Or make it optional
-* Make the stake pool configs optional so a passive node can also be provisioned
-* Maybe add EIP (how tolerant is the network to a changing node IP?)
 * Helpful scripts to do the following:
   - restart.sh: Restart jormungandr container on the node
   - update.sh: Update the version of jormungandr running on the node
   - backup.sh: Snapshot and store important data on the node (blocks in storage - is this backup actually needed?)
-* Refactoring (especially shell scripts and how they interact, shared terraform between aws / do)
