@@ -4,11 +4,11 @@ resource "digitalocean_ssh_key" "ssh_key" {
 }
 
 resource "digitalocean_droplet" "node" {
-  name     = "cardano-node"
-  image    = "${var.image}"
-  region   = "${var.region}"
-  size     = "${var.node_droplet_size}"
-  ssh_keys = ["${digitalocean_ssh_key.ssh_key.fingerprint}"]
+  name       = "cardano-node"
+  image      = "${var.image}"
+  region     = "${var.region}"
+  size       = "${var.node_droplet_size}"
+  ssh_keys   = ["${digitalocean_ssh_key.ssh_key.fingerprint}"]
   monitoring = true
 
   connection {

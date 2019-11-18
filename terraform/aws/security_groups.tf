@@ -13,7 +13,7 @@ resource "aws_security_group" "node_ssh_and_tcp" {
     from_port   = "${var.node_rest_port}"
     to_port     = "${var.node_rest_port}"
     protocol    = "tcp"
-    cidr_blocks = "${var.trusted_ingress_cidrs}"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
