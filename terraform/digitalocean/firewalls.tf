@@ -11,7 +11,7 @@ resource "digitalocean_firewall" "node_ssh_and_tcp" {
   inbound_rule {
     protocol         = "tcp"
     port_range       = "${var.node_rest_port}"
-    source_addresses = ["0.0.0.0/0"]
+    source_addresses = "${var.trusted_ingress_cidrs}"
   }
 
   inbound_rule {
