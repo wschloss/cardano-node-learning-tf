@@ -28,9 +28,9 @@ rest:
  listen: 0.0.0.0:3101
 storage: "./storage"
 mempool:
-  fragment_ttl: 30m
-  log_ttl: 30m
-  garbage_collection_interval: 30m
+  fragment_ttl: 1h
+  log_ttl: 20m
+  garbage_collection_interval: 20m
 leadership:
   log_ttl: 30m
   garbage_collection_interval: 30m
