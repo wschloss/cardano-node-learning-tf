@@ -35,7 +35,7 @@
         },
         "digitalOcean": {
             "doAccessTokenFile": "~/.digitalocean/credentials",
-            "nodeDropletSize": "s-1vcpu-1gb",
+            "nodeDropletSize": "s-2vcpu-4gb",
             "image": "ubuntu-18-04-x64",
             "region": "sfo2",
             "trustedIngressCidrs": ["73.153.8.165/32", "24.8.144.180/32"],

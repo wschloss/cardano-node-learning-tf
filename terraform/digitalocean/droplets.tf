@@ -33,9 +33,10 @@ resource "digitalocean_droplet" "node" {
 
   provisioner "remote-exec" {
     inline = [
-      "apt update -y",
-      "apt upgrade -y",
-      "apt install docker.io -y",
+      "sleep 30",
+      "apt-get update -y",
+      "apt-get upgrade -y",
+      "apt-get install docker.io -y",
       "docker run -d -p ${var.node_rest_port}:${var.node_rest_port} -p ${var.node_grpc_port}:${var.node_grpc_port} --name cardano-node -v /configuration:/configuration:ro -v /storage:/root/storage ${var.node_docker_image} /root/jormungandr --config /configuration/node-config.yaml --secret /configuration/node-secret.yaml --genesis-block-hash ${var.genesis_block_hash}"
     ]
   }
